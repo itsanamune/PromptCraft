@@ -1,70 +1,122 @@
-# Getting Started with Create React App
+# PromptCraft
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+PromptCraft is a user-friendly tool for creating and managing prompts for Large Language Models (LLMs). It offers an intuitive interface to design, organize, and optimize prompts, enhancing AI interactions across various applications. PromptCraft simplifies prompt engineering, making it accessible for both beginners and experts.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run PromptCraft on your local machine, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Ensure you have [Node.js](https://nodejs.org/) (version 14 or higher) and npm installed.
 
-### `npm test`
+2. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/promptcraft.git
+   cd promptcraft
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. Install the required dependencies:
+   ```
+   npm install react react-dom
+   npm install @radix-ui/react-tabs @radix-ui/react-label @radix-ui/react-select
+   npm install lucide-react
+   npm install tailwindcss@latest postcss@latest autoprefixer@latest
+   ```
 
-### `npm run build`
+4. Set up Tailwind CSS:
+   ```
+   npx tailwindcss init -p
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Create a `src/index.css` file and add the following content:
+   ```css
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. Update your `tailwind.config.js` file:
+   ```javascript
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     content: ["./src/**/*.{js,jsx,ts,tsx}"],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   }
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+7. Start the development server:
+   ```
+   npm start
+   ```
 
-### `npm run eject`
+8. Open your browser and navigate to `http://localhost:3000` to view the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Usage
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+After starting the application, you can:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Create new prompts by filling out the form in the "Create Prompt" tab.
+2. View and manage existing prompts in the "View Prompts" tab.
+3. Filter prompts by category using the dropdown menu.
+4. Edit or delete existing prompts as needed.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Data Storage and Persistence
 
-## Learn More
+PromptCraft currently uses the File System Access API as well as browser memory for data storage, providing a desktop-like experience for managing your prompts.
+* <span style="color: red; font-weight: bold;">Very Important Note About Data Storage and Persistence: Currently PromptCraft uses browser memory to store your prompts which means:</span>
+- If you use a different browser your prompts wont be saved on the new browser 
+- If you clear your browsers cache you may delete your prompts
+- If you use an incognito tab you may not see your prompts
+- Until we update PromptCraft to a better data storage solution the best practice for ensuring you never lose your prompts is to save them to a file often so you always have a backup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Key features:
+1. Direct File Access: Save and load your prompts directly to/from files on your computer.
+2. Unlimited Storage: Only limited by your available disk space.
+3. Full Control: You decide where to save your data and can easily backup or transfer files.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Important notes:
+- Supported in modern browsers (Chrome 86+, Edge 86+, Opera 73+)
+- Requires user permission to access files (you'll be prompted to choose a save location)
+- Using a incognito tab, using a different browser, or clearing your browser cache will erase your prompts 
+- Data is stored entirely on your local device
 
-### Code Splitting
+To use:
+1. Click the "Save Data" button to save your prompts. You'll be prompted to choose a save location and filename on first use.
+2. Click the "Load Data" button to load previously saved prompts. You'll be prompted to select the file to load.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Features
 
-### Analyzing the Bundle Size
+- Create and store custom prompts
+- Create and store prompt modules (sections of prompts you want to reuse in other prompts)
+- Categorize prompts and modules for easy organization
+- Filter and search functionality
+- User-friendly interface for prompt management
+- Local storage for persisting data between sessions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
 
-### Making a Progressive Web App
+We welcome contributions to PromptCraft! If you have suggestions for improvements or bug fixes, please follow these steps:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or support, please open an issue in the GitHub repository.
